@@ -1,2 +1,1 @@
-
-export type SquareColor = "red" | "black";
+export type SquareColor = 'red' | 'black';
