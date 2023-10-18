@@ -45,10 +45,8 @@ function calculateNextSquareColor(id: number, currentColor: SquareColor) {
 function reducer(state: BoardType, action: any) {
   switch (action.type) {
     case 'select':
-      let newState = { ...state };
-      newState.squares = [...state.squares];
-      newState.squares[action.id].selected = true;
-      return newState;
+      state.squares[action.id].selected = true;
+      return { ...state };
       break;
   }
 }

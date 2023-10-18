@@ -4,6 +4,7 @@ import { Square as SquareType } from 'src/app/types/Square';
 
 function Square({ id, color, occupiedBy, selected, onClick }: SquareProps) {
   let occupiedStyles = '';
+
   if (occupiedBy != null) {
     if (occupiedBy == 'black') occupiedStyles = `${styles.occupiedByBlack}`;
     else occupiedStyles = `${styles.occupiedByRed}`;
