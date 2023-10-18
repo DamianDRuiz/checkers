@@ -7,8 +7,20 @@
 */
 
 .square {
-  height: 100%;
-  color: white;
+  position: relative;
+  &::before {
+    visibility: hidden;
+    content: '';
+    margin: 10px;
+    border: 2px solid white;
+    border-radius: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
 
 .black {
@@ -17,4 +29,23 @@
 
 .red {
   background-color: red;
+}
+
+.occupiedByBlack,
+.occupiedByRed {
+  &::before {
+    visibility: visible;
+  }
+}
+
+.occupiedByBlack {
+  &::before {
+    background-color: black;
+  }
+}
+
+.occupiedByRed {
+  &::before {
+    background-color: red;
+  }
 }
