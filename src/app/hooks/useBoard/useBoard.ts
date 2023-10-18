@@ -5,6 +5,7 @@ import { DEFAULT_BOARD_SIZE } from 'src/contants';
 
 export function useBoard() {
   const board: Board = buildBoard();
+  console.log(board);
   return board;
 }
 
@@ -12,17 +13,23 @@ function buildBoard(): Board {
   const squareCount = DEFAULT_BOARD_SIZE * DEFAULT_BOARD_SIZE;
   const board: Board = { squares: [] };
   const squares: Square[] = [];
-  let currentColor: SquareColor = 'black';
+  let currentSquareColor: SquareColor = 'black';
 
   for (let i = 0; i < squareCount; i++) {
+    let occupiedBy: null | SquareColor = null;
+
+    if (i + 1 <= 24 && currentSquareColor == 'black') occupiedBy = 'red';
+
+    if (i + 1 >= 41 && currentSquareColor == 'black') occupiedBy = 'black';
+
     const newSquare: Square = {
       id: i,
-      color: currentColor,
-      occupied: false,
+      color: currentSquareColor,
+      occupiedBy: occupiedBy,
     };
 
     squares.push({ ...newSquare });
-    currentColor = calculateNextSquareColor(i, currentColor);
+    currentSquareColor = calculateNextSquareColor(i, currentSquareColor);
   }
 
   board.squares = [...squares];

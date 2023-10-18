@@ -4,7 +4,7 @@ import styles from './Board.module.scss';
 import { Board as BoardType } from "src/app/types/Board";
 
 function Board({board}: BoardProps) {
-  const squares = board.squares.map((square) => <Square id={square.id} color={square.color} occupied={square.occupied} />)
+  const squares = board.squares.map((square, i) => <Square key={i} id={square.id} color={square.color} occupiedBy={square.occupiedBy} />)
   return <div className={styles.board}>{squares}</div>
 }
 
