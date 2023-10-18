@@ -2,7 +2,7 @@ import styles from './Square.module.scss';
 
 import { Square as SquareType } from 'src/app/types/Square';
 
-function Square({ id, color, occupiedBy }: SquareProps) {
+function Square({ id, color, occupiedBy, selected, onClick }: SquareProps) {
   let occupiedStyles = '';
   if (occupiedBy != null) {
     if (occupiedBy == 'black') occupiedStyles = `${styles.occupiedByBlack}`;
@@ -13,8 +13,14 @@ function Square({ id, color, occupiedBy }: SquareProps) {
     color === 'black' ? styles.black : styles.red
   } ${occupiedStyles}`;
 
-  return <div className={squareStyles}></div>;
+  return (
+    <div data-square-id={id} className={squareStyles} onClick={onClick}>
+      {selected ? 'SELECTED' : ''}
+    </div>
+  );
 }
 
-interface SquareProps extends SquareType {}
+interface SquareProps extends SquareType {
+  onClick: () => void;
+}
 export default Square;
