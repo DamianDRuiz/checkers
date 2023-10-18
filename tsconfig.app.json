@@ -6,7 +6,10 @@
   },
   "files": [
     "./node_modules/@nrwl/react/typings/cssmodule.d.ts",
-    "./node_modules/@nrwl/react/typings/image.d.ts"
+    "./node_modules/@nrwl/react/typings/image.d.ts",
+    "src/app/types/Board.tsx",
+    "src/app/types/Square.tsx",
+    "src/app/types/SquareColor.tsx"
   ],
   "exclude": [
     "src/**/*.spec.ts",
