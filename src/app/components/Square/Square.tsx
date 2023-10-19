@@ -4,20 +4,20 @@ import { Square as SquareType } from 'src/app/types/Square';
 
 function Square({ id, color, occupiedBy, selected, onClick }: SquareProps) {
   let occupiedStyles = '';
+  let selectedStyles = selected ? `${styles.selected}` : '';
+  let squareStyles = '';
 
   if (occupiedBy != null) {
     if (occupiedBy == 'black') occupiedStyles = `${styles.occupiedByBlack}`;
     else occupiedStyles = `${styles.occupiedByRed}`;
   }
 
-  let squareStyles = `${styles.square} ${
+  squareStyles = `${styles.square} ${
     color === 'black' ? styles.black : styles.red
-  } ${occupiedStyles}`;
+  } ${occupiedStyles} ${selectedStyles}`;
 
   return (
-    <div data-square-id={id} className={squareStyles} onClick={onClick}>
-      {selected ? 'SELECTED' : ''}
-    </div>
+    <div data-square-id={id} className={squareStyles} onClick={onClick}></div>
   );
 }
 
