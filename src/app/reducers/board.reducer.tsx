@@ -1,22 +1,31 @@
-import { Board as BoardType } from '../types/Board';
+import { Board } from '../types/Board';
 import { Square } from '../types/Square';
 
-export function reducer(state: BoardType, action: any) {
+export function reducer(state: Board, action: any) {
   switch (action.type) {
     case 'select':
-      state.squares = select(state.squares, action.id);
+      state.squares = selectSquare(state.squares, action.id);
       return { ...state };
       break;
   }
 }
 
-function select(squares: Square[], id: number) {
+function selectSquare(squares: Square[], id: number) {
+  if (squareIsOccupied(squares[id])) {
+    squares = unselectCurrentlySelectedSquare(squares);
+    squares[id].selected = true;
+  }
+  return squares;
+}
+
+function squareIsOccupied(square: Square) {
+  return square.occupiedBy != null ? true : false;
+}
+
+function unselectCurrentlySelectedSquare(squares: Square[]) {
   const currentlySelectedSquare = squares.find(
     (square) => square.selected == true
   );
-
   if (currentlySelectedSquare) currentlySelectedSquare.selected = false;
-
-  squares[id].selected = true;
   return squares;
 }
