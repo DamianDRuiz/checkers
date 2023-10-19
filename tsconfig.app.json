@@ -9,7 +9,9 @@
     "./node_modules/@nrwl/react/typings/image.d.ts",
     "src/app/types/Board.tsx",
     "src/app/types/Square.tsx",
-    "src/app/types/SquareColor.tsx"
+    "src/app/types/SquareColor.tsx",
+    "src/app/reducers/board.reducer.tsx",
+    "src/app/util/buildBoard.tsx"
   ],
   "exclude": [
     "src/**/*.spec.ts",
